@@ -259,7 +259,7 @@ select { color-scheme: dark; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .form-grid .full { grid-column: 1 / -1; }
 .modal-actions { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
-.mini-kpis { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-bottom: 14px; }
+.mini-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 14px; }
 .mini-kpis div { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; min-width: 0; }
 .mini-kpis span { display: block; font-size: 11px; color: var(--muted); }
 .mini-kpis strong { display: block; font-size: 15px; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -286,8 +286,8 @@ select { color-scheme: dark; }
     padding: 6px 6px calc(6px + env(safe-area-inset-bottom)); border-right: 0; border-top: 1px solid var(--line);
   }
   .sidebar .brand, .side-foot { display: none; }
-  .sidebar nav { flex-direction: row; justify-content: space-around; }
-  .sidebar nav a { flex-direction: column; gap: 2px; height: auto; padding: 6px 4px; font-size: 10px; flex: 1; text-align: center; }
+  .sidebar nav { flex-direction: row; justify-content: space-around; overflow-x: auto; scrollbar-width: none; }
+  .sidebar nav a { flex-direction: column; gap: 2px; height: auto; padding: 6px 2px; font-size: 10px; flex: 1 0 44px; min-width: 0; text-align: center; }
   .sidebar nav a span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
   .mobile-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
   .main { padding: 18px 16px 96px; }
@@ -304,3 +304,10 @@ select { color-scheme: dark; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* ---------- Suscripcion (aviso y bloqueo) ---------- */
+.banner { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(251, 191, 36, .35); background: rgba(251, 191, 36, .08); color: var(--text); font-size: 14px; }
+.banner.danger { border-color: rgba(248, 113, 113, .4); background: rgba(248, 113, 113, .08); }
+.lock-ic { width: 52px; height: 52px; margin: 22px 0 12px; border-radius: 14px; display: grid; place-items: center; background: rgba(248, 113, 113, .1); color: var(--neg); }
+.lock-ic .ic { width: 26px; height: 26px; fill: currentColor; }
+a.btn { text-decoration: none; }

@@ -1,5 +1,5 @@
 // =====================================================
-//  D.E.K NovaCore - Configuracion
+//  NovaCore - Configuracion
 //  Supabase -> Project Settings -> API  (o "Connect")
 // =====================================================
 window.NOVACORE_CONFIG = {
@@ -14,7 +14,15 @@ window.NOVACORE_CONFIG = {
   CURRENCY: 'USD',
   LOCALE: 'es-EC',
 
-  // Cuando ya hayas creado TU cuenta, ponlo en false para ocultar "Crear cuenta"
-  // (y desactiva los registros en Supabase: Authentication -> Sign In / Providers)
-  ALLOW_SIGNUP: false,
+  // Muestra la pestana "Activar mi cuenta". Solo pueden activarla los correos
+  // que diste de alta en "Negocios" (la base de datos rechaza a los demas).
+  // En Supabase: Authentication -> Sign In / Providers -> "Allow new users to sign up" ENCENDIDO.
+  ALLOW_SIGNUP: true,
+
+  // Tu WhatsApp de soporte (con codigo de pais) y la mensualidad sugerida
+  SOPORTE_WHATSAPP: '50766952340',
+  PRECIO_MENSUAL: 20,
+
+  // Enlace del sistema que va en las invitaciones (vacio = la direccion actual)
+  APP_URL: '',
 };
