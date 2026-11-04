@@ -16,5 +16,5 @@ window.NOVACORE_CONFIG = {
 
   // Cuando ya hayas creado TU cuenta, ponlo en false para ocultar "Crear cuenta"
   // (y desactiva los registros en Supabase: Authentication -> Sign In / Providers)
-  ALLOW_SIGNUP: true,
+  ALLOW_SIGNUP: false,
 };
