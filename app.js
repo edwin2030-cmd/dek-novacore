@@ -618,7 +618,10 @@
         return { n: ps.length, pagado: sum(S.ingresos.filter((x) => x.cliente_id === c.id)), pend: sum(ps.filter((p) => p.estado !== 'cancelado'), 'saldo_pendiente') };
       };
       const body = () => {
-        const r = S.clientes.filter((c) => matchQ(f.q, c.nombre, c.empresa, c.email, c.telefono));
+        // Primero los clientes con proyectos, luego los que no tienen (cada grupo sigue en orden alfabético)
+        const conProy = new Set(S.proyectos.map((p) => p.cliente_id));
+        const r = S.clientes.filter((c) => matchQ(f.q, c.nombre, c.empresa, c.email, c.telefono))
+          .sort((a, b) => conProy.has(b.id) - conProy.has(a.id));
         if (!r.length) return `<div class="table-wrap">${empty(S.clientes.length ? 'No se encontraron clientes' : 'Aún no tienes clientes registrados.')}</div>`;
         return `<div class="summary"><span><strong>${r.length}</strong> cliente${r.length === 1 ? '' : 's'}</span></div>
         <div class="table-wrap"><table class="tbl"><thead><tr><th>Cliente</th><th>Contacto</th><th class="r">${W.Ps}</th><th class="r">Te ha pagado</th><th class="r">Te debe</th><th></th></tr></thead><tbody>
